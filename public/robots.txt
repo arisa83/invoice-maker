@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://invoice-maker.vercel.app/sitemap.xml
+Sitemap: https://seikyu-tsukuru-kun.vercel.app/sitemap.xml
