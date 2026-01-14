@@ -131,104 +131,85 @@
             font-weight: 700;
         }
 
-        /* Grid */
+        /* Grid - More Compact */
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 2rem;
             width: 100%;
-            max-width: 900px;
+            max-width: 1000px;
         }
 
         /* Clay Card */
         .tool-card {
             position: relative;
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.65);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-radius: 40px;
-            padding: 2.5rem;
+            border-radius: 30px;
             text-decoration: none;
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             border: 2px solid rgba(255, 255, 255, 0.8);
 
             /* Claymorphism Shadow */
             box-shadow:
-                20px 20px 40px rgba(0, 0, 0, 0.05),
-                -10px -10px 30px rgba(255, 255, 255, 0.8),
-                inset 0 0 0 transparent;
+                15px 15px 30px rgba(0, 0, 0, 0.05),
+                -10px -10px 30px rgba(255, 255, 255, 0.8);
 
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            height: 280px;
+            overflow: hidden;
+            height: 320px;
         }
 
         .tool-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            background: rgba(255, 255, 255, 0.85);
+            transform: translateY(-10px) scale(1.03);
+            background: rgba(255, 255, 255, 0.9);
             border-color: #fff;
             box-shadow:
-                30px 30px 60px rgba(0, 0, 0, 0.1),
+                25px 25px 50px rgba(0, 0, 0, 0.1),
                 -10px -10px 30px rgba(255, 255, 255, 0.9);
+            z-index: 10;
         }
 
-        .card-icon-wrapper {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #a5b4fc, #6366f1);
-            border-radius: 24px;
+        .card-image-container {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .tool-card:hover .card-image {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 1.5rem;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 2rem;
-            color: white;
-            box-shadow:
-                10px 10px 20px rgba(99, 102, 241, 0.3),
-                inset 2px 2px 4px rgba(255, 255, 255, 0.4);
-            transform: rotate(-5deg);
-            transition: transform 0.4s ease;
-        }
-
-        .tool-card:hover .card-icon-wrapper {
-            transform: rotate(10deg) scale(1.1);
+            flex-direction: column;
         }
 
         .card-content h2 {
             font-family: var(--font-heading);
-            font-size: 1.75rem;
+            font-size: 1.25rem;
             color: #1f2937;
-            margin: 0 0 0.5rem 0;
+            margin: 0 0 0.25rem 0;
             font-weight: 800;
         }
 
         .card-content p {
             color: #6b7280;
             margin: 0;
-            font-size: 1rem;
-            line-height: 1.5;
-        }
-
-        .card-arrow {
-            position: absolute;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #6366f1;
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .tool-card:hover .card-arrow {
-            background: #6366f1;
-            color: white;
-            transform: scale(1.1);
+            font-size: 0.875rem;
+            line-height: 1.4;
         }
 
         .footer {
@@ -272,27 +253,24 @@
 
         <div class="tools-grid">
             <a href="/invoice-maker/" class="tool-card">
-                <div class="card-icon-wrapper">
-                    <i data-lucide="file-check-2" size="40"></i>
+                <div class="card-image-container">
+                    <img src="./assets/app-preview.png" alt="Invoice Maker Preview" class="card-image">
                 </div>
                 <div class="card-content">
                     <h2>Invoice Maker</h2>
-                    <p>サクサク作れる、<br>気持ちいい請求書ツール。</p>
-                </div>
-                <div class="card-arrow">
-                    <i data-lucide="arrow-right"></i>
+                    <p>直感的な請求書作成ツール</p>
                 </div>
             </a>
 
             <!-- Example of future tool -->
             <!--
             <a href="#" class="tool-card" style="opacity: 0.6; filter: grayscale(1);">
-                <div class="card-icon-wrapper" style="background: linear-gradient(135deg, #fcd34d, #f59e0b);">
-                    <i data-lucide="sparkles" size="40"></i>
+                <div class="card-image-container" style="background: #e5e7eb; display: flex; align-items: center; justify-content: center;">
+                    <span style="font-size: 2rem;">🚧</span>
                 </div>
                 <div class="card-content">
                     <h2>Coming Soon</h2>
-                    <p>面白そうな何かを<br>準備しています。</p>
+                    <p>新しいツールを準備中...</p>
                 </div>
             </a>
             -->
