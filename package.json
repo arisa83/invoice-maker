@@ -7,7 +7,7 @@
     "scripts": {
         "dev:invoice": "npm run dev -w invoice-maker",
         "build:invoice": "npm run build -w invoice-maker",
-        "build": "npm run build -w invoice-maker && mkdir -p dist/invoice-maker && cp -r invoice-maker/dist/* dist/invoice-maker/ && cp index.html dist/",
-        "deploy": "wrangler pages deploy dist --project-name vibeapphub"
+        "build": "npm run build -w invoice-maker && mkdir -p dist/invoice-maker && mkdir -p dist/assets && cp -r invoice-maker/dist/* dist/invoice-maker/ && cp index.html dist/ && cp -r assets/* dist/assets/",
+        "deploy": "wrangler pages deploy dist --project-name invoice-maker"
     }
 }
