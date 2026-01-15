@@ -17,6 +17,32 @@
     <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
+    <!-- Cloudflare Web Analytics -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "3396ff49fd0249ecb4e9cd7d71bee6c0"}'></script>
+    <!-- End Cloudflare Web Analytics -->
+
+    <!-- Meta/SEO -->
+    <meta name="description"
+        content="Vibe App Hubは、直感的な請求書作成ツール「請求書つくる君」をはじめとする、クリエイターやフリーランスのための便利なツールを集めたハブサイトです。登録不要で無料で利用できます。">
+    <meta name="keywords" content="請求書作成, 無料, 登録不要, フリーランス, クリエイター, Vibe App Hub, ツール">
+    <meta name="google-site-verification" content="h9QiTqCTt4ni39Q3UwIbhT9Ikd9F9CihtW9C_SWKtu4" />
+    <link rel="canonical" href="https://vibeapphub.com/">
+
+    <!-- OGP -->
+    <meta property="og:title" content="Vibe App Hub - クリエイティブツールのプレイグラウンド">
+    <meta property="og:description" content="登録不要の無料請求書作成ツールなど、便利なWebアプリが集まるハブサイト。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vibeapphub.com/">
+    <meta property="og:image" content="https://vibeapphub.com/assets/app-preview.png">
+    <meta property="og:site_name" content="Vibe App Hub">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vibe App Hub">
+    <meta name="twitter:description" content="登録不要の無料請求書作成ツールなど、便利なWebアプリが集まるハブサイト。">
+    <meta name="twitter:image" content="https://vibeapphub.com/assets/app-preview.png">
+
     <style>
         :root {
             --font-heading: 'Outfit', 'Fredoka', sans-serif;
@@ -132,13 +158,14 @@
             font-weight: 700;
         }
 
-        /* Grid - More Compact (Half width request) */
+        /* Grid - Updated for wider card */
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 2rem;
             width: 100%;
             max-width: 1000px;
+            justify-content: center;
         }
 
         /* Clay Card */
@@ -160,12 +187,13 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            height: 260px;
-            /* Reduced height to match smaller width */
+            /* Auto height to accommodate content */
+            height: auto;
+            min-height: 320px;
         }
 
         .tool-card:hover {
-            transform: translateY(-8px) scale(1.03);
+            transform: translateY(-8px) scale(1.02);
             background: rgba(255, 255, 255, 0.9);
             border-color: #fff;
             box-shadow:
@@ -176,8 +204,8 @@
 
         .card-image-container {
             width: 100%;
-            height: 140px;
-            /* Adjusted height */
+            height: 220px;
+            /* Increased height */
             overflow: hidden;
             position: relative;
             border-bottom: 1px solid rgba(255, 255, 255, 0.5);
@@ -188,32 +216,37 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            /* Changed to cover to fill area nicely */
+            object-position: top;
             transition: transform 0.5s ease;
         }
 
         .tool-card:hover .card-image {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .card-content {
-            padding: 1.5rem;
+            padding: 2rem;
             display: flex;
             flex-direction: column;
+            flex-grow: 1;
         }
 
         .card-content h2 {
             font-family: var(--font-heading);
-            font-size: 1.25rem;
+            font-size: 1.75rem;
+            /* Larger font */
             color: #1f2937;
-            margin: 0 0 0.25rem 0;
+            margin: 0 0 0.5rem 0;
             font-weight: 800;
         }
 
         .card-content p {
             color: #6b7280;
             margin: 0;
-            font-size: 0.875rem;
-            line-height: 1.4;
+            font-size: 1rem;
+            /* Base font size */
+            line-height: 1.5;
         }
 
         .footer {
@@ -226,6 +259,10 @@
         @media (max-width: 640px) {
             .hub-header h1 {
                 font-size: 3.5rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
             }
 
             .shape-1 {
@@ -262,22 +299,9 @@
                 </div>
                 <div class="card-content">
                     <h2>Invoice Maker</h2>
-                    <p>直感的な請求書作成ツール</p>
+                    <p>直感的な請求書作成ツール。<br>登録不要で、誰でも美しい請求書をPDFで出力できます。</p>
                 </div>
             </a>
-
-            <!-- Example of future tool -->
-            <!--
-            <a href="#" class="tool-card" style="opacity: 0.6; filter: grayscale(1);">
-                <div class="card-image-container" style="background: #e5e7eb; display: flex; align-items: center; justify-content: center;">
-                    <span style="font-size: 2rem;">🚧</span>
-                </div>
-                <div class="card-content">
-                    <h2>Coming Soon</h2>
-                    <p>新しいツールを準備中...</p>
-                </div>
-            </a>
-            -->
         </div>
 
         <footer class="footer">
