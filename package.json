@@ -2,12 +2,15 @@
     "name": "root",
     "private": true,
     "workspaces": [
-        "invoice-maker"
+        "invoice-maker",
+        "quote-maker"
     ],
     "scripts": {
         "dev:invoice": "npm run dev -w invoice-maker",
+        "dev:quote": "npm run dev -w quote-maker",
         "build:invoice": "npm run build -w invoice-maker",
-        "build": "npm run build -w invoice-maker && mkdir -p dist/invoice-maker && mkdir -p dist/assets && cp -r invoice-maker/dist/* dist/invoice-maker/ && cp index.html dist/ && cp -r assets/* dist/assets/",
+        "build:quote": "npm run build -w quote-maker",
+        "build": "npm run build -w invoice-maker && npm run build -w quote-maker && mkdir -p dist/invoice-maker && mkdir -p dist/quote-maker && mkdir -p dist/assets && cp -r invoice-maker/dist/* dist/invoice-maker/ && cp -r quote-maker/dist/* dist/quote-maker/ && cp index.html dist/ && cp -r assets/* dist/assets/",
         "deploy": "wrangler pages deploy dist --project-name invoice-maker"
     }
 }

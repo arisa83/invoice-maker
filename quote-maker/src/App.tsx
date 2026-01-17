@@ -1,14 +1,14 @@
 import { useState, useRef, useEffect } from 'react';
 import { Download, FileText } from 'lucide-react';
-import { InvoiceForm } from './components/InvoiceForm';
-import { InvoicePreview } from './components/InvoicePreview';
-import { initialInvoice } from './types';
-import type { Invoice } from './types';
+import { QuoteForm } from './components/QuoteForm';
+import { QuotePreview } from './components/QuotePreview';
+import { initialQuote } from './types';
+import type { Quote } from './types';
 import { generatePDF } from './utils/pdfGenerator';
 import './index.css';
 
 function App() {
-  const [invoice, setInvoice] = useState<Invoice>(initialInvoice);
+  const [quote, setQuote] = useState<Quote>(initialQuote);
   const [activeTab, setActiveTab] = useState<'edit' | 'preview'>('edit');
   const [isGenerating, setIsGenerating] = useState(false);
   const [previewScale, setPreviewScale] = useState(0.6);
@@ -20,7 +20,7 @@ function App() {
     if (contentRef.current) {
       setContentHeight(contentRef.current.offsetHeight);
     }
-  }, [invoice, activeTab]);
+  }, [quote, activeTab]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -74,14 +74,14 @@ function App() {
       await new Promise(resolve => setTimeout(resolve, 500));
     }
 
-    const dateObj = new Date(invoice.date);
+    const dateObj = new Date(quote.date);
     const year = dateObj.getFullYear();
     const month = dateObj.getMonth() + 1;
     // Remove honorifics and newlines for filename safety, fallback to 'Unknown'
-    const safeClientName = (invoice.toName || 'Client').split('\n')[0].replace(/御中|様/g, '').trim() || 'Client';
-    const fileName = `${year}年${month}月_${safeClientName}様ご請求書.pdf`;
+    const safeClientName = (quote.toName || 'Client').split('\n')[0].replace(/御中|様/g, '').replace(/[\\/:*?"<>|]/g, '').trim() || 'Client';
+    const fileName = `${year}年${month}月_${safeClientName}様御見積書.pdf`;
 
-    await generatePDF('invoice-preview', fileName);
+    await generatePDF('quote-preview', fileName);
     setIsGenerating(false);
   };
 
@@ -107,8 +107,8 @@ function App() {
             }}>
               <FileText size={24} />
             </div>
-            <h1 style={{ fontSize: '1.25rem', fontWeight: 'bold', margin: 0, color: 'var(--color-primary)' }}>
-              請求書つくる君
+            <h1 style={{ fontSize: '1.25rem', fontWeight: 'bold', margin: 0, background: 'linear-gradient(to right, var(--color-primary), var(--color-secondary))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              見積書つくる君
             </h1>
           </div>
 
@@ -164,7 +164,7 @@ function App() {
         <div className="scroll-panel" style={{
           display: activeTab === 'edit' || window.innerWidth >= 1024 ? 'block' : 'none'
         }}>
-          <InvoiceForm invoice={invoice} onChange={setInvoice} />
+          <QuoteForm quote={quote} onChange={setQuote} />
         </div>
 
         {/* Preview Panel */}
@@ -195,7 +195,7 @@ function App() {
             // overflow: 'hidden' // Removed to avoid clipping shadows/long content
           }}>
             <div ref={contentRef} style={{ width: '100%', minHeight: '1123px' }}>
-              <InvoicePreview invoice={invoice} />
+              <QuotePreview quote={quote} />
             </div>
           </div>
 

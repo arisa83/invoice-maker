@@ -2,12 +2,12 @@
 
 :root {
   /* Colors */
-  --color-primary: #6366f1;
-  /* Indigo 500 */
-  --color-primary-dark: #4f46e5;
-  /* Indigo 600 */
-  --color-secondary: #ec4899;
-  /* Pink 500 */
+  --color-primary: #10b981;
+  /* Emerald 500 */
+  --color-primary-dark: #059669;
+  /* Emerald 600 */
+  --color-secondary: #2dd4bf;
+  /* Teal 400 */
   --color-background: #f8fafc;
   /* Slate 50 */
   --color-surface: #ffffff;
@@ -36,7 +36,7 @@
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-glow: 0 0 15px rgba(99, 102, 241, 0.3);
+  --shadow-glow: 0 0 15px rgba(16, 185, 129, 0.4);
 
   /* Typography */
   --font-sans: 'Roboto', 'Noto Sans JP', sans-serif;
@@ -103,7 +103,7 @@ body {
 }
 
 .btn-primary {
-  background-color: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
   color: white;
   box-shadow: var(--shadow-glow);
 }
